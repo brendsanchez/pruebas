@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +12,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private RadioGroup grupo;
-    private RadioButton radioButton, lastButtom;
-    private EditText editText;
-    private String stringQueSeEnvia;
+    private RadioGroup grupo, grupo2;
+    private EditText editText, editText2;
+    private String stringQueSeEnvia, stringQueSeEnvia2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,50 +22,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button2);
 
-        lastButtom = findViewById(R.id.rbtOtraAgresion);
+        editText = findViewById(R.id.edtOtraAgresion);
         grupo = findViewById(R.id.radioGrup);
 
+        editText2 = findViewById(R.id.edtOtraAgresion2);
+        grupo2 = findViewById(R.id.radioGrup2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*int radioid = grupo.getCheckedRadioButtonId();
-                radioButton = findViewById(radioid);
-                */
-                checkea();
-                //Toast.makeText(MainActivity.this, stringQueSeEnvia, Toast.LENGTH_SHORT).show();
+                checkea(grupo, editText, stringQueSeEnvia,"Seleccione agresion");
+                checkea(grupo2,editText2,stringQueSeEnvia2,"seleccione numero");
             }
         });
     }
 
-    @SuppressLint("ResourceType")
-    private void checkea() {
+    //metodo para que el el radio grupo si no han seleccionado para que muestre y no rompa
+    private void checkea(RadioGroup grupo, EditText text, String stringEspecifica, String mensajeError) {
+        final RadioButton algo;
+        int id = grupo.getCheckedRadioButtonId();
 
-        if (grupo.getCheckedRadioButtonId() != -1) {
-            Toast.makeText(MainActivity.this, grupo.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show();
+        if(id != -1){
+            algo = findViewById(id);
 
-        } else {
-            Toast.makeText(MainActivity.this, "selecione radio buttom", Toast.LENGTH_SHORT).show();
-            // pls select at-least one radio button.. since id is -1 means no button is check
-        }
-
-
-        RadioButton aux = findViewById(R.id.rbtVerbales);
-        aux.setChecked(false);
-
-        radioButton = findViewById(grupo.getCheckedRadioButtonId());
-        String algo = radioButton.getText().toString().trim();
-
-        if (algo.equals("Otro:")) {
-            editText = findViewById(R.id.edtOtraAgresion);
-            stringQueSeEnvia = editText.getText().toString().trim();
-            if (stringQueSeEnvia.isEmpty()) {
-                editText.setError("completar");
+            if (algo.getText().toString().equals("Otro:")) {
+                stringEspecifica = text.getText().toString().trim();
+                if (stringEspecifica.isEmpty()) {
+                    stringEspecifica = "seleciono otro complete";
+                    text.setError("completar");
+                }
+            } else {
+                stringEspecifica = algo.getText().toString().trim();
             }
+            Toast.makeText(MainActivity.this, stringEspecifica, Toast.LENGTH_SHORT).show();
         } else {
-            stringQueSeEnvia = algo;
+            Toast.makeText(MainActivity.this, mensajeError, Toast.LENGTH_SHORT).show();
         }
-
-
-        //((RadioButton)grupo.getChildAt(lastChildPos)).setError("Your error");
     }
+
 }

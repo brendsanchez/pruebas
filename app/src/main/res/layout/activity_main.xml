@@ -52,32 +52,26 @@
             android:text="Requiza humillante o vejatoria"
             android:textSize="16dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbtOtraAgresion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otro:"
+            android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtOtraAgresion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Otro:"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/edtOtraAgresion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="aclarar"
-                    android:textSize="16sp" />
-            </LinearLayout>
+        <EditText
+            android:id="@+id/edtOtraAgresion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="aclarar"
+            android:textSize="16sp" />
     </RadioGroup>
 
 
     <RadioGroup
         android:id="@+id/radioGrup2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
@@ -86,37 +80,37 @@
 
         <RadioButton
             android:id="@+id/rbtVerbales2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verbales"
+            android:text="1"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rbtFisicos2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fisicos"
+            android:text="2"
             android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/rbtAmenazas2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amenazas"
+            android:text="3"
             android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/rbtDañoPertenencias2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Robo/Daño de pertenencias"
+            android:text="4"
             android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/rbtRequizaHumillante2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Requiza humillante o vejatoria"
+            android:text="5"
             android:textSize="16dp" />
 
 
@@ -131,8 +125,8 @@
             android:id="@+id/edtOtraAgresion2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text"
             android:hint="aclarar"
+            android:inputType="text"
             android:textSize="16sp" />
     </RadioGroup>
 
