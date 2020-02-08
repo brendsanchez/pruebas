@@ -8,13 +8,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <RadioGroup
         android:id="@+id/radioGrup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
+        android:orientation="vertical"
         tools:ignore="UselessParent">
 
         <RadioButton
@@ -32,6 +32,7 @@
             android:textSize="16dp" />
 
         <RadioButton
+            android:gravity="left"
             android:id="@+id/rbtAmenazas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,13 +62,14 @@
 
         <EditText
             android:id="@+id/edtOtraAgresion"
-            android:layout_width="match_parent"
+            android:layout_width="244dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:layout_alignBottom="@+id/radioGrup"
+            android:layout_toRightOf="@+id/radioGrup"
             android:hint="aclarar"
+            android:inputType="text"
             android:textSize="16sp" />
     </RadioGroup>
-
 
     <RadioGroup
         android:id="@+id/radioGrup2"
@@ -103,32 +105,49 @@
             android:id="@+id/rbtDañoPertenencias2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4"
+            android:text="Si"
             android:textSize="16dp" />
 
         <RadioButton
             android:id="@+id/rbtRequizaHumillante2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5"
+            android:text="No"
             android:textSize="16dp" />
+    </RadioGroup>
 
+    <RadioGroup
+        android:id="@+id/radioGrup3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <RadioButton
-            android:id="@+id/rbtOtraAgresion2"
-            android:layout_width="wrap_content"
+            android:id="@+id/rbtVerbales3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Otro:"
+            android:text="No"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/edtOtraAgresion2"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/rbtFisicos3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Si"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edtOtraAgresion3"
+            android:layout_width="244dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/radioGrup"
+            android:layout_toRightOf="@+id/radioGrup"
             android:hint="aclarar"
             android:inputType="text"
             android:textSize="16sp" />
     </RadioGroup>
+
 
     <LinearLayout
         android:layout_width="249dp"
@@ -142,6 +161,8 @@
             android:layout_weight="1"
             android:text="Button" />
     </LinearLayout>
+
+
 
 
 </LinearLayout>
