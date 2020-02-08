@@ -32,44 +32,53 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkeoRadioGroupMasOpciones(grupo, editText, stringQueSeEnvia, "seleccione agresion");
-                checkeoRadioGroup2opciones(grupo2, stringQueSeEnvia2, "selencione numero");
-                checkeoRadioGroupMasOpciones(grupo3,editText3,stringQueSeEnvia3, "seleccione Si/no");
+                stringQueSeEnvia = checkeoRadioGroupMasOpciones(grupo, editText, "seleccione agresion");
+                stringQueSeEnvia2 = checkeoRadioGroup2opciones(grupo2, "selencione numero");
+                stringQueSeEnvia3 = checkeoRadioGroupMasOpciones(grupo3,editText3, "seleccione Si/no");
+
+                /*
+                makeTxt(stringQueSeEnvia);
+                makeTxt(stringQueSeEnvia2);
+                makeTxt(stringQueSeEnvia3); */
             }
         });
     }
 
     //metodo para que el el radio grupo si no han seleccionado para que muestre y no rompa
-    private void checkeoRadioGroupMasOpciones(RadioGroup grupoGroup, EditText text, String stringEspecifica, String mensajeError) {
+    private String checkeoRadioGroupMasOpciones(RadioGroup grupoGroup, EditText text, String mensajeError) {
         final RadioButton algo;
 
         if (seSeleccionoAlmenosUnoEn(grupoGroup)) {
             algo = findViewById(grupoGroup.getCheckedRadioButtonId());
 
             if (algo.getText().toString().equals("Otro:") || algo.getText().toString().equals("Si")) {
-                stringEspecifica = text.getText().toString().trim();
-                if (stringEspecifica.isEmpty()) {
-                    stringEspecifica = "Seleccionó la opcion " + algo.getText().toString() + ", especifique";
+
+                if (text.getText().toString().isEmpty()) {
+                    makeTxt("Seleccionó la opcion " + algo.getText().toString() + ", especifique");
                     text.setError("completar");
+                    return "";
+                }else{
+                    return text.getText().toString().trim();
                 }
             } else {
-                stringEspecifica = algo.getText().toString().trim();
+                return algo.getText().toString().trim();
             }
-            makeTxt(stringEspecifica);
+
         } else {
             makeTxt(mensajeError);
+            return "";
         }
     }
 
-    private void checkeoRadioGroup2opciones(RadioGroup radioGroup, String stringEspecifica, String mensajeError) {
+    private String checkeoRadioGroup2opciones(RadioGroup radioGroup, String mensajeError) {
         final RadioButton algo;
 
         if (this.seSeleccionoAlmenosUnoEn(radioGroup)) {
             algo = findViewById(radioGroup.getCheckedRadioButtonId());
-            stringEspecifica = algo.getText().toString().trim();
-            makeTxt(stringEspecifica);
+            return algo.getText().toString().trim();
         } else {
             makeTxt(mensajeError);
+            return "";
         }
     }
 
