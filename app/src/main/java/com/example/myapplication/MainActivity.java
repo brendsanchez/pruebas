@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkeoRadioGroupMasOpciones(grupo, editText, stringQueSeEnvia, new StringBuffer("Seleccione agresion"));
-                checkeoRadioGroup2opciones(grupo2, stringQueSeEnvia2, new StringBuffer("seleccione numero"));
-                checkeoRadioGroupMasOpciones(grupo3,editText3,stringQueSeEnvia3, new StringBuffer("Seleccione Si/No"));
+                checkeoRadioGroupMasOpciones(grupo, editText, stringQueSeEnvia, "seleccione agresion");
+                checkeoRadioGroup2opciones(grupo2, stringQueSeEnvia2, "selencione numero");
+                checkeoRadioGroupMasOpciones(grupo3,editText3,stringQueSeEnvia3, "seleccione Si/no");
             }
         });
     }
 
     //metodo para que el el radio grupo si no han seleccionado para que muestre y no rompa
-    private void checkeoRadioGroupMasOpciones(RadioGroup grupoGroup, EditText text, String stringEspecifica, StringBuffer mensajeError) {
+    private void checkeoRadioGroupMasOpciones(RadioGroup grupoGroup, EditText text, String stringEspecifica, String mensajeError) {
         final RadioButton algo;
 
         if (seSeleccionoAlmenosUnoEn(grupoGroup)) {
@@ -55,25 +55,25 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 stringEspecifica = algo.getText().toString().trim();
             }
-            makeTxt(new StringBuffer(stringEspecifica));
+            makeTxt(stringEspecifica);
         } else {
             makeTxt(mensajeError);
         }
     }
 
-    private void checkeoRadioGroup2opciones(RadioGroup radioGroup, String stringEspecifica, StringBuffer mensajeError) {
+    private void checkeoRadioGroup2opciones(RadioGroup radioGroup, String stringEspecifica, String mensajeError) {
         final RadioButton algo;
 
         if (this.seSeleccionoAlmenosUnoEn(radioGroup)) {
             algo = findViewById(radioGroup.getCheckedRadioButtonId());
             stringEspecifica = algo.getText().toString().trim();
-            makeTxt(new StringBuffer(stringEspecifica));
+            makeTxt(stringEspecifica);
         } else {
             makeTxt(mensajeError);
         }
     }
 
-    private void makeTxt(StringBuffer mensaje) {
+    private void makeTxt(String mensaje) {
         Toast.makeText(MainActivity.this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
