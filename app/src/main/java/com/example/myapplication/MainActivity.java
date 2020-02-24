@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private RadioGroup grupo, grupo2, grupo3;
-    private EditText editText, editText3;
+    private EditText editText, editText2, editText3;
     private String stringQueSeEnvia, stringQueSeEnvia2, stringQueSeEnvia3;
 
     @Override
@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button2);
 
-        editText = findViewById(R.id.edtOtraAgresion);
-        grupo = findViewById(R.id.radioGrup);
+        //editText = findViewById(R.id.edtOtraAgresion);
+        //grupo = findViewById(R.id.radioGrup);
+        editText = findViewById(R.id.edtDondeDenuncia);
+        editText2 = findViewById(R.id.edtPorQueNoDenuncia);
+        grupo = findViewById(R.id.rgDenuncia);
 
         grupo2 = findViewById(R.id.radioGrup2);
 
@@ -32,34 +35,27 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stringQueSeEnvia = checkeoRadioGroupMasOpciones(grupo, editText, "seleccione agresion");
+                stringQueSeEnvia = checkRadioGroup(grupo, editText, editText2, "seleccione denuncia");
                 stringQueSeEnvia2 = checkeoRadioGroup2opciones(grupo2, "selencione numero");
-                stringQueSeEnvia3 = checkeoRadioGroupMasOpciones(grupo3,editText3, "seleccione Si/no");
+                stringQueSeEnvia3 = checkRadioGroup(grupo3, editText3, "seleccione Si/no");
 
-                /*
-                makeTxt(stringQueSeEnvia);
+
+                /*makeTxt(stringQueSeEnvia);
                 makeTxt(stringQueSeEnvia2);
-                makeTxt(stringQueSeEnvia3); */
+                makeTxt(stringQueSeEnvia3);*/
             }
         });
     }
 
     //metodo para que el el radio grupo si no han seleccionado para que muestre y no rompa
-    private String checkeoRadioGroupMasOpciones(RadioGroup grupoGroup, EditText text, String mensajeError) {
+    private String checkRadioGroup(RadioGroup grupoGroup, EditText text, String mensajeError) {
         final RadioButton algo;
 
         if (seSeleccionoAlmenosUnoEn(grupoGroup)) {
             algo = findViewById(grupoGroup.getCheckedRadioButtonId());
 
             if (algo.getText().toString().equals("Otro:") || algo.getText().toString().equals("Si")) {
-
-                if (text.getText().toString().isEmpty()) {
-                    makeTxt("Seleccionó la opcion " + algo.getText().toString() + ", especifique");
-                    text.setError("completar");
-                    return "";
-                }else{
-                    return text.getText().toString().trim();
-                }
+                return this.chooseSeleccion(text, algo);
             } else {
                 return algo.getText().toString().trim();
             }
@@ -91,4 +87,34 @@ public class MainActivity extends AppCompatActivity {
         return id != -1;
     }
 
+    private String checkRadioGroup(RadioGroup grupoGroup, EditText text, EditText text2, String mensajeError) {
+        final RadioButton algo;
+
+        if (seSeleccionoAlmenosUnoEn(grupoGroup)) {
+            algo = findViewById(grupoGroup.getCheckedRadioButtonId());
+
+            if (algo.getText().toString().equals("Si")) {
+                text2.setText("");
+                return this.chooseSeleccion(text, algo);
+            } else if (algo.getText().toString().equals("No")) {
+                text.setText("");
+                return this.chooseSeleccion(text2, algo);
+            } else {
+                return algo.getText().toString().trim();
+            }
+        } else {
+            return "";
+        }
+    }
+
+    private String chooseSeleccion(EditText text, RadioButton algo) {
+        if (text.getText().toString().isEmpty()) {
+            makeTxt("Seleccionó la opcion " + algo.getText().toString() + ", especifique");
+            text.setError("completar");
+            return "";
+        } else {
+            text.requestFocus();
+            return algo.getText().toString().trim() + ": "+ text.getText().toString().trim();
+        }
+    }
 }

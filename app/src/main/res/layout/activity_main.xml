@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
+<!---
 
     <RadioGroup
         android:id="@+id/radioGrup"
@@ -70,7 +70,7 @@
             android:inputType="text"
             android:textSize="16sp" />
     </RadioGroup>
-
+-->
     <RadioGroup
         android:id="@+id/radioGrup2"
         android:layout_width="wrap_content"
@@ -147,6 +147,61 @@
             android:inputType="text"
             android:textSize="16sp" />
     </RadioGroup>
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="30dp">
+
+        <RadioGroup
+            android:id="@+id/rgDenuncia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbtSiHizoDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Si"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbtNoHizoDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbtNoSabeHacerDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No sabe"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edtDondeDenuncia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rgDenuncia"
+            android:inputType="text"
+            android:hint="¿Donde?"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtPorQueNoDenuncia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rgDenuncia"
+            android:layout_centerInParent="true"
+            android:inputType="text"
+            android:hint="¿Porque?"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
 
     <LinearLayout
